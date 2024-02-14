@@ -14,7 +14,7 @@ from .streams import Stream, StreamList, value_to_flag, key_if_not_None
 
 
 # Initialization
-app = Flask(APPLICATION_NAME, template_folder='../templates', static_folder="../static")
+app = Flask(APPLICATION_NAME, template_folder='../streamer/templates', static_folder="../streamer/static")
 Markdown(app)
 app.config["SECRET_KEY"] = "b6e8d852-80fb-473d-9437-7e6a65e84875"
 socketio = SocketIO(app)
@@ -30,7 +30,7 @@ config["application"]["hls_path"] = config["application"]["hls_path"].rstrip("/"
     
 
 # Read the description.md from the static folder
-with open(os.path.join(SCRIPTDIR, "../static/description.md")) as f:
+with open(os.path.join(SCRIPTDIR, "../streamer/static/description.md")) as f:
     description = f.read()
     # Replace the placeholder values
     description = description.replace("[[[HOSTNAME]]]", config["application"]["hostname"])
